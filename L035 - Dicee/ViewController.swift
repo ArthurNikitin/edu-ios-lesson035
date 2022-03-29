@@ -15,25 +15,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var diceImageView2: UIImageView!
     
     var leftDiceNumber = 0
-    var rightDiceNumber = 5
+    var rightDiceNumber = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-  
-    }
+    
+    
 
     @IBAction func rollButtonPresed(_ sender: UIButton) {
+        
+        let diceArray = [ UIImage (named:"DiceOne"), UIImage (named:"DiceTwo"), UIImage (named:"DiceThree"), UIImage (named:"DiceFour"), UIImage (named:"DiceFive"), UIImage (named:"DiceSix")]
         print("Button got tapped!")
        
         
-         diceImageView1.image = [ UIImage (named:"DiceOne"), UIImage (named:"DiceTwo"), UIImage (named:"DiceThree"), UIImage (named:"DiceFour"), UIImage (named:"DiceFive"), UIImage (named:"DiceSix")][leftDiceNumber]
+        leftDiceNumber = Int.random(in: 0...5)
+        diceImageView1.image = (diceArray.randomElement()!!)
         
-        diceImageView2.image = [ UIImage (named:"DiceOne"), UIImage (named:"DiceTwo"), UIImage (named:"DiceThree"), UIImage (named:"DiceFour"), UIImage (named:"DiceFive"), UIImage (named:"DiceSix")][rightDiceNumber]
-        
-        leftDiceNumber = leftDiceNumber + 1
-        rightDiceNumber = rightDiceNumber - 1
+        rightDiceNumber = Int.random(in: 0...5)
+        diceImageView2.image = diceArray.randomElement() as! UIImage
+
+        print ("leftDiceNumber \(leftDiceNumber)")
+        print ("rightDiceNumber \(rightDiceNumber)")
+
     }
     
 }
